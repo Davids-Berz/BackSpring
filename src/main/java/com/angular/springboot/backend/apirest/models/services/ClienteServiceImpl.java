@@ -30,7 +30,7 @@ public class ClienteServiceImpl implements IClienteService {
     @Transactional(readOnly = true)
     public List<Cliente> findAll() {
         log.info("Sentencia con @Query en JPA");
-        return clienteDao.buscarTodos();
+        return clienteDao.findAll();
     }
 
     @Override

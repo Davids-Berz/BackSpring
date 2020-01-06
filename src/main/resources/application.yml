@@ -8,6 +8,10 @@ spring:
     password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
     platform: org.hibernate.dialect.MySQL8Dialect
+  jackson:
+    time-zone: America/Mexico_City
+    locale: es_MX
+
   jpa:
     hibernate:
       ddl-auto: create-drop

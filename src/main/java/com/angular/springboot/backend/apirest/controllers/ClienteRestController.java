@@ -73,7 +73,6 @@ public class ClienteRestController {
 
         try {
             clienteNew = this.clienteService.save(cliente);
-
         }catch (DataAccessException e) {
             response.put("mensaje", "Error al realizar el insert en la base de datos");
             response.put("error", "El correo ya se encuentra en uso");
@@ -108,7 +107,7 @@ public class ClienteRestController {
             clienteActual.setNombre(cliente.getNombre());
             clienteActual.setApellido(cliente.getApellido());
             clienteActual.setEmail(cliente.getEmail());
-            clienteActual.prePersist();
+            clienteActual.setCreateAt(cliente.getCreateAt());
         } catch (DataAccessException e) {
             response.put("mensaje", "Error al actualizar en la base de datos");
             response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
