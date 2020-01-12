@@ -2,6 +2,8 @@ package com.angular.springboot.backend.apirest.models.services;
 
 import com.angular.backend.commons.models.entity.Cliente;
 import com.angular.springboot.backend.apirest.models.dao.IClienteDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +18,8 @@ public class ClienteServiceImpl implements IClienteService {
     @Autowired
     IClienteDao clienteDao;
 
+    private Logger log = LoggerFactory.getLogger(ClienteServiceImpl.class);
+
     @Override
     @Transactional(readOnly = true)
     public Page<Cliente> findAll(Pageable pageable) {
@@ -25,7 +29,8 @@ public class ClienteServiceImpl implements IClienteService {
     @Override
     @Transactional(readOnly = true)
     public List<Cliente> findAll() {
-        return (List<Cliente>) clienteDao.findAll();
+        log.info("Sentencia con @Query en JPA");
+        return clienteDao.buscarTodos();
     }
 
     @Override
